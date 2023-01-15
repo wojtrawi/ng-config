@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import { ENVIRONMENT } from './environment.token';
 import { LoggerService } from './logger';
 import { init } from './store-tmp';
 
@@ -10,6 +12,8 @@ import { init } from './store-tmp';
 })
 export class AppComponent {
   title = 'ng-config';
+
+  public readonly environment = inject(ENVIRONMENT);
 
   private readonly loggerService = inject(LoggerService);
   private readonly store = inject(Store);

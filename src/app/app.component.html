@@ -1,5 +1,9 @@
 <h1>{{ title }}</h1>
 <section>
+  <p>ENVIRONMENT token value</p>
+  <pre>{{ environment | json }}</pre>
+</section>
+<section>
   <p>Try using logger service</p>
   <button (click)="logMessage()">log message!</button>
 </section>
