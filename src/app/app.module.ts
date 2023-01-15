@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store-tmp';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { WITH_CONFIG, provideConfigInitializer } from './config';
+import { LoggerService } from './logger';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,14 @@ import { environment } from '../environments/environment';
       ? []
       : StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
-  providers: [],
+  providers: [
+    provideConfigInitializer(),
+    {
+      provide: WITH_CONFIG,
+      multi: true,
+      useExisting: LoggerService,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

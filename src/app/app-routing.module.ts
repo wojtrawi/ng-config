@@ -7,7 +7,7 @@ const routes: Routes = [];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      enableTracing: !environment.production,
+      // enableTracing: !environment.production,
     }),
   ],
   exports: [RouterModule],

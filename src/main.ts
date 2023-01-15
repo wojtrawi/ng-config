@@ -9,22 +9,22 @@ if (environment.production) {
   enableProdMode();
 }
 
-// platformBrowserDynamic()
-//   .bootstrapModule(AppModule)
-//   .then(() => {
-//     console.log('[main.js]: executed');
-//   })
-//   .catch((err) => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .then(() => {
+    console.log('[main.js]: executed');
+  })
+  .catch((err) => console.error(err));
 
-(async function () {
-  const config = await fetchConfig();
+// (async function () {
+//   const config = await fetchConfig();
 
-  console.log(`[main.js]: config value ${JSON.stringify(config)}`);
+//   console.log(`[main.js]: config value ${JSON.stringify(config)}`);
 
-  platformBrowserDynamic([provideConfig(config)])
-    .bootstrapModule(AppModule)
-    .then(() => {
-      console.log('[main.js]: executed');
-    })
-    .catch((err) => console.error(err));
-})();
+//   platformBrowserDynamic([provideConfig(config)])
+//     .bootstrapModule(AppModule)
+//     .then(() => {
+//       console.log('[main.js]: executed');
+//     })
+//     .catch((err) => console.error(err));
+// })();

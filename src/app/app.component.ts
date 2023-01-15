@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CONFIG } from './config';
+import { CONFIG, ConfigService } from './config';
 
 import { ENVIRONMENT } from './environment.token';
 import { LoggerService } from './logger';
@@ -17,10 +17,13 @@ export class AppComponent {
 
   public readonly environment = inject(ENVIRONMENT);
   public readonly target = inject(TARGET);
-  public readonly config = inject(CONFIG);
+  public readonly config = inject(CONFIG, { optional: true });
 
+  private readonly configService = inject(ConfigService);
   private readonly loggerService = inject(LoggerService);
   private readonly store = inject(Store);
+
+  public readonly configState$ = this.configService.state$;
 
   constructor() {
     console.log('[AppComponent]: created');
