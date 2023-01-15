@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { ENVIRONMENT } from './environment.token';
 import { LoggerService } from './logger';
 import { init } from './store-tmp';
+import { TARGET } from './target.token';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   title = 'ng-config';
 
   public readonly environment = inject(ENVIRONMENT);
+  public readonly target = inject(TARGET);
 
   private readonly loggerService = inject(LoggerService);
   private readonly store = inject(Store);

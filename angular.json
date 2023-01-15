@@ -51,7 +51,7 @@
                   "with": "src/app/logger/concrete-logger.prod.service.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,
