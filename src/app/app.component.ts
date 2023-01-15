@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { CONFIG } from './config';
 
 import { ENVIRONMENT } from './environment.token';
 import { LoggerService } from './logger';
@@ -16,11 +17,13 @@ export class AppComponent {
 
   public readonly environment = inject(ENVIRONMENT);
   public readonly target = inject(TARGET);
+  public readonly config = inject(CONFIG);
 
   private readonly loggerService = inject(LoggerService);
   private readonly store = inject(Store);
 
   constructor() {
+    console.log('[AppComponent]: created');
     this.store.dispatch(init({ message: 'Hello from AppComponent' }));
   }
 
