@@ -8,9 +8,20 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store-tmp';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { WITH_CONFIG, provideConfigInitializer } from './config';
+import {
+  WITH_CONFIG,
+  provideConfigInitializer,
+  CONFIG,
+  Config,
+} from './config';
 import { LoggerService } from './logger';
 import { provideI18nInitializer } from './i18n';
+
+declare global {
+  interface Window {
+    config: Config;
+  }
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +45,11 @@ import { provideI18nInitializer } from './i18n';
       provide: WITH_CONFIG,
       multi: true,
       useExisting: LoggerService,
+    },
+    // alternative to config.json
+    {
+      provide: CONFIG,
+      useValue: window['config'],
     },
   ],
   bootstrap: [AppComponent],
