@@ -1,0 +1,4 @@
+{
+  "deployEnv": "$DEPLOY_ENV",
+  "version": "$APP_VERSION"
+}
