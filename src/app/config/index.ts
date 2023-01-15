@@ -5,3 +5,4 @@ export * from './config.initializer';
 export * from './with-config.token';
 export * from './configurable';
 export * from './config';
+export * from './app-with-config-initializer.token';

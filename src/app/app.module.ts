@@ -10,6 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { WITH_CONFIG, provideConfigInitializer } from './config';
 import { LoggerService } from './logger';
+import { provideI18nInitializer } from './i18n';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { LoggerService } from './logger';
   ],
   providers: [
     provideConfigInitializer(),
+    provideI18nInitializer(),
     {
       provide: WITH_CONFIG,
       multi: true,
