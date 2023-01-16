@@ -15,7 +15,7 @@ const initialState: UserInfoState = {
 
 const mockUserInfo: UserInfo = {
   name: 'john',
-  isPremium: true,
+  isPremium: false,
 };
 
 @Injectable({
