@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CONFIG, ConfigService } from './config';
+import { EMPTY, switchMap } from 'rxjs';
 
+import { AuthService } from './auth';
+import { CONFIG, ConfigService } from './config';
 import { ENVIRONMENT } from './environment.token';
 import { LoggerService } from './logger';
 import { init } from './store-tmp';
@@ -21,6 +23,7 @@ export class AppComponent {
   public readonly config = inject(CONFIG, { optional: true });
 
   private readonly configService = inject(ConfigService);
+  private readonly authService = inject(AuthService);
   private readonly userInfoService = inject(UserInfoService);
   private readonly loggerService = inject(LoggerService);
   private readonly store = inject(Store);
@@ -31,7 +34,15 @@ export class AppComponent {
   constructor() {
     console.log('[AppComponent]: created');
     this.store.dispatch(init({ message: 'Hello from AppComponent' }));
-    this.userInfoService.load().subscribe();
+
+    this.authService
+      .verify()
+      .pipe(
+        switchMap((isLoggedIn) =>
+          isLoggedIn ? this.userInfoService.load() : EMPTY
+        )
+      )
+      .subscribe();
   }
 
   logMessage(): void {
