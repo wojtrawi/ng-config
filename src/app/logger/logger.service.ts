@@ -7,7 +7,7 @@ import { RemoteLoggerService } from './remote-logger.service';
 
 @Injectable({
   providedIn: 'root',
-  // useClass: environment.production ? RemoteLoggerService : LocalLoggerService,
+  useClass: environment.production ? RemoteLoggerService : LocalLoggerService,
   // useFactory: () =>
   //   environment.production
   //     ? new RemoteLoggerService()
@@ -22,7 +22,7 @@ import { RemoteLoggerService } from './remote-logger.service';
   //     }
   //   }
   // },
-  useClass: ConcreteLoggerService,
+  // useClass: ConcreteLoggerService,
 })
 export abstract class LoggerService {
   abstract log(message: string): void;

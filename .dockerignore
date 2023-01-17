@@ -1,0 +1,11 @@
+.git
+.gitignore
+coverage
+dist
+node_modules
+.angular
+.vscode
+.husky
+Dockerfile
+README.md
+external-config.json

@@ -13,21 +13,21 @@ const mockTranslations: Translations = ['foo', 'bar', 'baz'];
 export class I18nService {
   private readonly configService = inject(ConfigService);
 
-  public load(): Observable<Translations> {
-    const config = this.configService.config;
-    console.log(`[I18nService]: config value ${JSON.stringify(config)}`);
-
-    return timer(2000).pipe(map(() => mockTranslations));
-  }
-
   // public load(): Observable<Translations> {
-  //   return this.configService.state$.pipe(
-  //     first((config) => config.isLoaded),
-  //     exhaustMap(({ data }) => {
-  //       console.log(`[I18nService]: config value ${JSON.stringify(data)}`);
+  //   const config = this.configService.config;
+  //   console.log(`[I18nService]: config value ${JSON.stringify(config)}`);
 
-  //       return timer(2000).pipe(map(() => mockTranslations));
-  //     })
-  //   );
+  //   return timer(2000).pipe(map(() => mockTranslations));
   // }
+
+  public load(): Observable<Translations> {
+    return this.configService.state$.pipe(
+      first((config) => config.isLoaded),
+      exhaustMap(({ data }) => {
+        console.log(`[I18nService]: config value ${JSON.stringify(data)}`);
+
+        return timer(2000).pipe(map(() => mockTranslations));
+      })
+    );
+  }
 }

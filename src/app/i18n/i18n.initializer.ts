@@ -5,8 +5,8 @@ import { I18nService } from './i18n.service';
 
 export function provideI18nInitializer(): Provider {
   return {
-    // provide: APP_INITIALIZER,
-    provide: APP_WITH_CONFIG_INITIALIZER,
+    provide: APP_INITIALIZER,
+    // provide: APP_WITH_CONFIG_INITIALIZER,
     multi: true,
     useFactory: () => {
       const i18nService = inject(I18nService);

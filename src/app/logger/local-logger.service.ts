@@ -10,7 +10,7 @@ export class LocalLoggerService implements LoggerService, Configurable {
 
   constructor() {
     console.log('[LocalLoggerService]: created');
-    // this.initialize();
+    this.initialize();
   }
 
   log(message: string): void {

@@ -7,7 +7,7 @@ import { LoggerService } from './logger.service';
 export class RemoteLoggerService implements LoggerService, Configurable {
   constructor() {
     console.log('[RemoteLoggerService]: created');
-    // this.initialize();
+    this.initialize();
   }
 
   log(message: string): void {
